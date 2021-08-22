@@ -20,8 +20,7 @@ class QuestionController extends Controller
     {
         $question = $request->question;
 
-        $questions = Question::whereRaw('MATCH (question, answer) AGAINST (? IN NATURAL LANGUAGE MODE)' , array($question))->paginate(10);
-        $questions->appends(['question' => $question]);
+        $questions = Question::whereRaw('MATCH (question, answer) AGAINST (? IN NATURAL LANGUAGE MODE)', array($question))->paginate(10)->withQueryString();
 
         return view('questions.index', compact('question', 'questions'));
     }

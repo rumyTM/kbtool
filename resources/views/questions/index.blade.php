@@ -21,7 +21,7 @@
                         <div class="pt-3 pb-4">
                             <form action="{{ route('search.questions') }}" method="GET">
                                 <div class="input-group">
-                                    <input type="text" name="question" class="form-control" value="{{ $question ?? '' }}"
+                                    <input type="search" name="question" class="form-control" value="{{ $question ?? '' }}"
                                            placeholder="Enter question here..." required>
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-success">Search</button>
