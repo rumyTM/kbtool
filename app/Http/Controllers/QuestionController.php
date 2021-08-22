@@ -18,11 +18,9 @@ class QuestionController extends Controller
 
     public function search(Request $request)
     {
-        $question = $request->question;
+        $questions = Question::whereRaw('MATCH (question, answer) AGAINST (? IN NATURAL LANGUAGE MODE)', array($request->question))->paginate(10)->withQueryString();
 
-        $questions = Question::whereRaw('MATCH (question, answer) AGAINST (? IN NATURAL LANGUAGE MODE)', array($question))->paginate(10)->withQueryString();
-
-        return view('questions.index', compact('question', 'questions'));
+        return view('questions.index', compact('questions'));
     }
 
     public function show(Question $question)

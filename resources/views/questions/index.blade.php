@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ $title ?? "Search Result Page - " . $question }}
+    {{ $title ?? "Search Result Page - " . request()->question }}
 @endsection
 
 @section('content')
@@ -21,16 +21,16 @@
                         <div class="pt-3 pb-4">
                             <form action="{{ route('search.questions') }}" method="GET">
                                 <div class="input-group">
-                                    <input type="search" name="question" class="form-control" value="{{ $question ?? '' }}"
+                                    <input type="search" name="question" class="form-control" value="{{ request()->question }}"
                                            placeholder="Enter question here..." required>
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-success">Search</button>
                                     </div>
                                 </div>
                             </form>
-                            @isset($question)
+                            @isset(request()->question)
                                 <div class="mt-4 text-center">
-                                    <h4>Search Results For "{{ $question }}"</h4>
+                                    <h4>Search Results For "{{ request()->question }}"</h4>
                                 </div>
                             @endisset
                         </div>
