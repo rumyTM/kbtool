@@ -1,0 +1,13 @@
+.search-item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e3eaef;
+    margin-bottom: 20px
+}
+
+.search-item:last-of-type {
+    border-bottom: 0px;
+}
+
+.mt-20p {
+    margin-top: 20%;
+}
