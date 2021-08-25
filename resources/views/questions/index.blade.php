@@ -43,7 +43,7 @@
                             <div class="search-item">
                                 <h4 class="mb-1"><a
                                         href="{{ route('questions.show', $question) }}">{{ $question->question }}</a></h4>
-                                <p class="mb-0 text-muted">{{ $question->answer }}</p>
+                                <p class="mb-0 text-muted">{{ Str::limit($question->answer, 200) }}</p>
                             </div>
                         @empty
                             <div class="mt-4 text-center">

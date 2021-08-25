@@ -32,25 +32,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item  {{ request()->routeIs('home') ? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->routeIs('questions.index') ? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('questions.index') }}">Questions</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 @guest
-                    <li class="nav-item">
+                    <li class="nav-item {{ request()->routeIs('login') ? 'active' : ''}}">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     <span class="d-none d-lg-block py-2">|</span>
-                    <li class="nav-item">
+                    <li class="nav-item {{ request()->routeIs('register') ? 'active' : ''}}">
                         <a class="nav-link" href="{{ route('register') }}">Registration</a>
                     </li>
                 @else
                     @if(auth()->user()->is_admin)
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->routeIs('admin.questions.create') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ route('admin.questions.create') }}">Add Question</a>
                         </li>
                         <span class="d-none d-lg-block py-2">|</span>
